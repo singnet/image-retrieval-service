@@ -1,22 +1,22 @@
 # Image Similarity with Siamese Networks in Pytorch
 
-The goal is to teach a siamese network to be able to distinguish pairs of images. 
-This project uses pytorch. 
+This Project implements different image similarity measures based on the following two approaches
 
-Any dataset can be used. Each class must be in its own folder. This is the same structure that PyTorch's own image folder dataset uses.
+   - [Based on Siamese Network ](http://yann.lecun.com/exdb/publis/pdf/chopra-05.pdf)which is neural network architectures that contain two or more identical subnetworks
+   
+   <img src="https://qph.fs.quoracdn.net/main-qimg-b90431ff9b4c60c5d69069d7bc048ff0" width=400 height=300 float-left>
 
-### Converting pgm files (if you decide to use the AT&T dataset) to png
-1. Install imagemagick 
-2. Go to root directory of the images
-3. Run `find -name "*pgm" | xargs -I {} convert {} {}.png`
+   - Using resnet18 pre-trained Network to extract features and by evaluating the similarity of two images either based on cosine similarity or pairwise similarity 
+   
+## Setup
 
-
-
-## Installing the right version of PyTorch 
-This project is updated to be compatible with pytorch 0.4.0
-
-
-You can find other project requirements in `requirements.txt` , which you can install using `pip install -r requirements.txt`
-
-#### This project requires python3.6
-
+  -  Siamese Network 
+      - to train on new dataset look at  Siamese-networks-train.ipynb
+      - after training on that dataset it can return simmilarity measure between images 
+               
+               code at  SiameseTest.py
+  - Using Pretrained resent18 model
+      - after feature extraction using pretrained model it calculates image simmilarity 
+               
+               code at  calculate_simmilarity_resnet18.py
+             
