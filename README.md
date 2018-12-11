@@ -1,5 +1,4 @@
-# Facial Similarity with Siamese Networks in Pytorch
-You can read the accompanying article at https://hackernoon.com/one-shot-learning-with-siamese-networks-in-pytorch-8ddaab10340e
+# Image Similarity with Siamese Networks in Pytorch
 
 The goal is to teach a siamese network to be able to distinguish pairs of images. 
 This project uses pytorch. 
