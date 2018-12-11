@@ -8,7 +8,7 @@ This Project implements different image similarity measures based on the followi
 
    - Using resnet18 pre-trained Network to extract features and by evaluating the similarity of two images either based on cosine similarity or pairwise similarity 
    
-## Setup
+## Description
 
   -  Siamese Network 
       - to train on new dataset look at  Siamese-networks-train.ipynb
@@ -19,4 +19,11 @@ This Project implements different image similarity measures based on the followi
       - after feature extraction using pretrained model it calculates image simmilarity 
                
                code at  calculate_simmilarity_resnet18.py
+               
+          
+## Requirement
+
+       pytorch 0.4
+       python3
+       
              
