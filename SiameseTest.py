@@ -43,13 +43,13 @@ class SiameseTest():
 
 
 
-pic_one = Image.open("./data/flower_data/train/1/image_06734.jpg")
-pic_two = Image.open("./data/flower_data/train/1/image_06734.jpg")
-pic_3 = Image.open("./data/download.jpeg")	
+# pic_one = Image.open("./data/flower_data/train/1/image_06734.jpg")
+# pic_two = Image.open("./data/flower_data/train/1/image_06734.jpg")
+# pic_3 = Image.open("./data/download.jpeg")	
 
-res = SiameseTest("model_augmented.pt")
-value = res.getDistance(pic_one,pic_two)
-valuec = res.getDistance(pic_one,pic_3)
-print(value,valuec)
+# res = SiameseTest("model_augmented.pt")
+# value = res.getDistance(pic_one,pic_two)
+# valuec = res.getDistance(pic_one,pic_3)
+# print(value,valuec)
 
 
