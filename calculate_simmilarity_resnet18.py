@@ -10,7 +10,12 @@ import torch.nn.functional as F
 
 class ResnetSimmilarity():
 	def __init__(self):
-		self.model = models.resnet50(pretrained=True)
+		self.train_on_gpu = torch.cuda.is_available()
+		if self.train_on_gpu:
+			self.model = models.resnet50(pretrained=True).cuda()
+		else:
+			self.model = models.resnet50(pretrained=True)
+
 		self.model = nn.Sequential(*list(self.model.children())[:-1])
 		for param in self.model.parameters():
 			param.requires_grad = False
@@ -23,10 +28,15 @@ class ResnetSimmilarity():
 		
 
 	def getMapping(self,image):
-		img = Variable(self.transform(image))
+		if self.train_on_gpu:
+			img = Variable(self.transform(image)).cuda()
+		else:
+			img = Variable(self.transform(image))
+		
 		img = img.view(1,3,224,224)
 
 		img1_feature = self.model(img)
+		img1_feature = img1_feature.cpu()
 		return img1_feature
 
 
