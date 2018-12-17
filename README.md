@@ -1,4 +1,4 @@
-# Image Similarity with Siamese Networks in Pytorch
+# Image Retrieval in Pytorch
 
 This Project implements different image similarity measures based on the following two approaches
 
