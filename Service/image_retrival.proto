@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message ImageFile {
+	bytes value = 1;
+}
+
+service SimilarImage {
+	rpc FindSimilar(ImageFile) returns (ImageFile) {}
+}
