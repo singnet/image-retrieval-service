@@ -14,31 +14,34 @@ from PIL import Image
 import numpy as np
 
 
-def find_similar(input_image,Img_similarity=None):
+def find_similar(input_image,Img_similarity="EuclideanDistance"):
 	try:
-		image = Image.frombytes(data=input_image,size=(480,320),mode='RGB')
+		image = Image.frombytes(data=input_image,size=(100,100),mode='RGB')
 	except:
-		image = Image.frombytes(data=input_image,size=(480,320),mode='L')
+		image = Image.frombytes(data=input_image,size=(100,100),mode='L')
 		image = image.convert('RGB')
 
-	if ImageSimilarity == None:
-		imgs = ImageSimilarity()
+	# imgs = ImageSimilarity()
+	print(Img_similarity)
+
+	if ImageSimilarity == "CosineDistance":
+		imgs = ImageSimilarity(distanceMeasure="CosineDistance")
 	else:
-		imgs = Img_similarity
+		imgs = ImageSimilarity(distanceMeasure="EuclideanDistance")
 
 
-	re = imgs.query(pic_one1)
+	re = imgs.query(image)
 	print(re)
 
-	#remove
-	a = np.zeros((200,200))
-	number = 2
+	image_1 = Image.open(re[0]).resize((100,100))
+	image_2 = Image.open(re[1]).resize((100,100))
+	image_3 = Image.open(re[2]).resize((100,100))
 
-	img_out = Image.fromarray(a)
+	image_1_b = image_1.tobytes()
+	image_2_b = image_2.tobytes()
+	image_3_b = image_3.tobytes()
 
-	img = img_out.convert('L').tobytes() 
-
-	return img
+	return image_2_b
 
 
 # imgs = ImageSimilarity()

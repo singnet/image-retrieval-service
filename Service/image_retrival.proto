@@ -2,6 +2,7 @@ syntax = "proto3";
 
 message ImageFile {
 	bytes value = 1;
+	string similarity = 2;
 }
 
 service SimilarImage {
