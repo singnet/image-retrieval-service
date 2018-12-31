@@ -14,11 +14,13 @@ from PIL import Image
 import numpy as np
 
 
-def find_similar(input_image,Img_similarity="EuclideanDistance"):
+def find_similar(input_image,image_size=100 ,Img_similarity="EuclideanDistance"):
+	print
+	IMG_SHAPE = (image_size,image_size)
 	try:
-		image = Image.frombytes(data=input_image,size=(100,100),mode='RGB')
+		image = Image.frombytes(data=input_image,size=IMG_SHAPE,mode='RGB')
 	except:
-		image = Image.frombytes(data=input_image,size=(100,100),mode='L')
+		image = Image.frombytes(data=input_image,size=IMG_SHAPE,mode='L')
 		image = image.convert('RGB')
 
 	print(Img_similarity)
@@ -30,17 +32,23 @@ def find_similar(input_image,Img_similarity="EuclideanDistance"):
 
 
 	re = imgs.query(image)
-	print(re)
+	imgs.tearDown()
 
-	image_1 = Image.open(re[0]).resize((100,100))
-	image_2 = Image.open(re[1]).resize((100,100))
-	image_3 = Image.open(re[2]).resize((100,100))
+	image_1 = Image.open(re[0]).resize(IMG_SHAPE)
+	image_2 = Image.open(re[1]).resize(IMG_SHAPE)
+	image_3 = Image.open(re[2]).resize(IMG_SHAPE)
+	image_4= Image.open(re[3]).resize(IMG_SHAPE)
+	image_5 = Image.open(re[4]).resize(IMG_SHAPE)
+
 
 	image_1_b = image_1.tobytes()
 	image_2_b = image_2.tobytes()
 	image_3_b = image_3.tobytes()
+	image_4_b = image_2.tobytes()
+	image_5_b = image_3.tobytes()
 
-	return image_2_b
+
+	return image_1_b,image_2_b,image_3_b,image_4_b,image_5_b
 
 
 # imgs = ImageSimilarity()

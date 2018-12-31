@@ -1,10 +1,19 @@
 syntax = "proto3";
 
-message ImageFile {
+message ImageFileIn {
 	bytes value = 1;
-	string similarity = 2;
+	float image_size = 2;
+	string similarity = 3;
+}
+
+message ImageFileOut {
+	bytes imageOut1 = 4;
+	bytes imageOut2 = 5;
+	bytes imageOut3 = 6;
+	bytes imageOut4 = 7;
+	bytes imageOut5 = 8;
 }
 
 service SimilarImage {
-	rpc FindSimilar(ImageFile) returns (ImageFile) {}
+	rpc FindSimilar(ImageFileIn) returns (ImageFileOut) {}
 }

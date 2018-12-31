@@ -36,17 +36,16 @@ class ImageSimilarity():
 		N = self.engine.neighbours(image_emb[0])
 		for i in range(len(N)):
 		    result.append(N[i][1])
-		    if i == 2:
+		    if i == 5:
 		        break
 
 		return result
 
+	def tearDown(self):
+		self.filehandler.close()
 
 
-# imgs = ImageSimilarity()
-# pic_one1  = Image.open("./data/classed_data/val/Dog/b8f75a7e8e6def6c.jpg")
-# re = imgs.query(pic_one1)
-# print(re)
+
 
 
 
