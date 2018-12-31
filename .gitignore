@@ -3,6 +3,8 @@ __pycache__/
 *$py.class
 
 
+Service/image_retrival_pb2.py
+Service/image_retrival_pb2_grpc.py
 
 *.jpg
 *.jpeg
