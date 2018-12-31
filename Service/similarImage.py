@@ -21,7 +21,6 @@ def find_similar(input_image,Img_similarity="EuclideanDistance"):
 		image = Image.frombytes(data=input_image,size=(100,100),mode='L')
 		image = image.convert('RGB')
 
-	# imgs = ImageSimilarity()
 	print(Img_similarity)
 
 	if ImageSimilarity == "CosineDistance":
