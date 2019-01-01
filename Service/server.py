@@ -10,7 +10,7 @@ import similarImage
 class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
 	def FindSimilar(self,request,context):
 		responce = image_retrival_pb2.ImageFileOut()
-		responce.imageOut1,responce.imageOut2,responce.imageOut3,responce.imageOut4,responce.imageOut5 = similarImage.find_similar(request.value)
+		responce.imageOut1,responce.imageOut2,responce.imageOut3,responce.imageOut4,responce.imageOut5 = similarImage.find_similar(request.value,int(request.image_size),request.similarity)
 		return responce
 
 

@@ -9,24 +9,42 @@ import numpy as np
 import subprocess
 import torch.nn as nn
 import torch
+from PIL import ImageChops
 
 
 class TestSuiteGrpc(unittest.TestCase):
     def setUp(self):
-    	self.image = Image.open('docs/assets/boy.jpg')
+    	self.image = Image.open("data/example_dataset/4f24007b18d82e7b.jpg")
     	self.server = Server()
     	self.server.start_server()
     	self.client = ClientTest()
 
     def test_grpc_call(self):
-    	stub = self.client.open_grpc_channel()
-    	image1,image2,image3,image4,image5 = self.client.send_request(stub,self.image)
+        stub = self.client.open_grpc_channel()
+        image1,image2,image3,image4,image5 = self.client.send_request(stub,self.image,similarity = "Test")
+        results = ["data/example_dataset/4f24007b18d82e7b.jpg",
+        "data/example_dataset/c449a728be2c4144.jpg",
+        "data/example_dataset/1655ed7fefd46b13.jpg",
+        "data/example_dataset/c449a728be2c4144.jpg",
+        "data/example_dataset/1655ed7fefd46b13.jpg"]
 
-    	assert(Image.isImageType(image1) == True)
-    	assert(Image.isImageType(image2) == True)
-    	assert(Image.isImageType(image3) == True)
-    	assert(Image.isImageType(image4) == True)
-    	assert(Image.isImageType(image5) == True)
+
+        image1_exp = self.image.resize((100,100))
+        image2_exp = Image.open(results[1]).resize((100,100))
+        image3_exp = Image.open(results[2]).resize((100,100))
+        image4_exp = Image.open(results[3]).resize((100,100))
+        image5_exp = Image.open(results[4]).resize((100,100))
+        
+
+        image5.save('out.jpg')
+        image5_exp.save('out2.jpg')
+
+        assert(ImageChops.difference(image1, image1_exp).getbbox() == None)
+        assert(ImageChops.difference(image2, image2_exp).getbbox() == None)        
+        assert(ImageChops.difference(image3, image3_exp).getbbox() == None)
+        assert(ImageChops.difference(image4, image4_exp).getbbox() == None)
+        assert(ImageChops.difference(image5, image5_exp).getbbox() == None)
+
 
 
     	

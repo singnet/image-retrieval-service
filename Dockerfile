@@ -19,10 +19,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 
 RUN python3.6 -m pip install -U pip
+RUN python3.6 -m pip install --upgrade setuptools
 # Download Dataset
 # Download HASH TABLES
-RUN python3.6 -m pip install -r requirements.txt
-RUN python3.6 -m pip install grpcio grpcio-tools
+# COPY requirements.txt /tmp
+# WORKDIR /tmp
+RUN python3.6 -m pip install matplotlib  numpy==1.15.1  Pillow==5.3.0  torch==1.0.0  torchvision==0.2.1  argparse==1.4.0  jupyter==1.0.0  jupyter-client==5.2.3  jupyter-console==5.2.0  jupyter-core==4.4.0  jupyterlab==0.34.9  jupyterlab-launcher==0.13.1  NearPy==1.0.0  pickle-mixin==1.0.2  grpcio==1.17.0  grpcio-tools==1.17.0  ipykernel==4.9.0  ipython==6.5.0  ipython-genutils==0.2.0  ipywidgets==7.4.1  progressbar==2.5  
+# RUN python3.6 -m pip install grpcio grpcio-tools
 
 COPY . /Image-retrieval-in-pytorch
 

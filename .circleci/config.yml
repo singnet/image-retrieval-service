@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: israelabebe/image-retrieval:latest
+    steps:
+      - checkout
+      - run:
+          name: install GRPC
+          command: python3.6 -m pip install grpcio grpcio-tools
+      - run:
+          name: Generate GRPC files
+          command: cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
+      - run:
+          name: Run Tests
+          command: python3.6 -m unittest test_rpc_call.TestSuiteGrpc
+          
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build

@@ -36,13 +36,13 @@ class ClientTest():
 		return stub
 		
 
-	def send_request(self,stub,img):
+	def send_request(self,stub,img,similarity="EuclideanDistance"):
 		out_file_name = self.image_output+'.png'
 		img = img
 		img = img.resize(IMG_SHAPE)
 		img_b = img.tobytes()
 
-		image_file = image_retrival_pb2.ImageFileIn(value = img_b,image_size=IMG_SHAPE[0],similarity="EuclideanDistance")
+		image_file = image_retrival_pb2.ImageFileIn(value = img_b,image_size=int(IMG_SHAPE[0]),similarity=similarity)
 
 		responce = stub.FindSimilar(image_file)
 

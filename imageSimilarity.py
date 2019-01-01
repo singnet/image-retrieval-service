@@ -18,13 +18,15 @@ class ImageSimilarity():
 		self.res_similar= ResnetSimilarity()
 		dimension = 2048
 		rbp = RandomBinaryProjections('rbp', 10)
-		self.engine = Engine(dimension, lshashes=[rbp],distance=EuclideanDistance())
+		self.engine = Engine(dimension, lshashes=[rbp])
 		if distanceMeasure == "EuclideanDistance":
-			self.filehandler = open("hashed_object_equilidian.pkl", 'rb')
+			self.filehandler = open("hashed_objects/hashed_object_equilidian.pkl", 'rb')
+		elif distanceMeasure == "Test":
+			self.filehandler = open("hashed_objects/hashed_object_example.pkl", 'rb')
 		else:
-			self.filehandler = open("hashed_object.pkl", 'rb')
-
+			self.filehandler = open("hashed_objects/hashed_object_Cosine.pkl", 'rb')
 		self.engine = pickle.load(self.filehandler)
+		self.filehandler.close()
 		print("Hash Table Loaded")
 
 	def query(self,image):
@@ -38,6 +40,7 @@ class ImageSimilarity():
 		    result.append(N[i][1])
 		    if i == 5:
 		        break
+
 
 		return result
 
