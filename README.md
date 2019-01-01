@@ -30,12 +30,48 @@ This Project implements image retrieval from large image dataset using different
                
 ## Install prerequisites        
 
-## Requirement
+### Using pip
 
-       pip install -r requirements.txt
-       
-       
-       
+      #To install requirements for the project 
+      $ pip install -r requirements.txt
+
+      $ pip install grpcio
+      $ pip install grpcio-tools
+
+ ## Setup  
+ 
+      run the following command to generate gRPC classes for Python
+
+      # only in Service folder run
+      $ python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
+
+
+## Usage
+To run it on your own image, use the following command. Please make sure to see their paper / the code for more details.
+
+       # on project directory this will start the server 
+	   $ python  start_service.py
+     
+     
+
+## Using docker with GPU
+
+If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which you can use to build your image.
+
+     docker build --file Dockerfile.gpu . -t singnet:image-retrieval
+
+## Using docker with CPU
+
+You can also build an image which has only the CPU dependecies to evaluate the models provided.
+
+	docker build --file Dockerfile . -t singnet:image-retrieval-cpu
+   
+   
+ ## How to Use the docker image
+	
+      # this will open port 50051 and run the service 
+      docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
+
  ## How to preprocess datasets
  - After downoading [Google Open Images Dataset v4](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) use data/preprocess.py to put each data in their classes . i also used data/testtrainsplit.py to separate the data to folders for checking image retrieval (but this is not mandatory)
  
