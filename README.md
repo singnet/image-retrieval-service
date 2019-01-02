@@ -1,5 +1,6 @@
 ![singnetlogo](docs/assets/singnet-logo.jpg?raw=true 'SingularityNET')
 
+[![CircleCI](https://circleci.com/gh/IsraelAbebe/Image-retrieval-in-pytorch.svg?style=svg)](https://circleci.com/gh/IsraelAbebe/Image-retrieval-in-pytorch)
 # Image Retrieval in Pytorch
 
 This Project implements image retrieval from large image dataset using different image similarity measures based on the following two approaches.

@@ -1,5 +1,6 @@
 ![singnetlogo](assets/singnet-logo.jpg?raw=true 'SingularityNET')
 
+[![CircleCI](https://circleci.com/gh/IsraelAbebe/Image-retrieval-in-pytorch.svg?style=svg)](https://circleci.com/gh/IsraelAbebe/Image-retrieval-in-pytorch)
 # Image Retrieval in Pytorch
 ## Service User's Guide
 
@@ -37,6 +38,6 @@ where each image is size provided during the request
 
 to get top 5 images images you can do like :
       
-      `# where responce.imageOut1 is the first output
+      # where responce.imageOut1 is the first output
       image1 = Image.frombytes(data=responce.imageOut1,size=IMG_SHAPE,mode='RGB')
-       `
+       

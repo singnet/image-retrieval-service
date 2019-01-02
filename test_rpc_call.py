@@ -36,8 +36,8 @@ class TestSuiteGrpc(unittest.TestCase):
         image5_exp = Image.open(results[4]).resize((100,100))
         
 
-        image5.save('out.jpg')
-        image5_exp.save('out2.jpg')
+#         image5.save('out.jpg')
+#         image5_exp.save('out2.jpg')
 
         assert(ImageChops.difference(image1, image1_exp).getbbox() == None)
         assert(ImageChops.difference(image2, image2_exp).getbbox() == None)        
