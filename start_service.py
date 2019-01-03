@@ -1,8 +1,8 @@
 import sys
+
 sys.path.insert(0, 'Service/')
 
 from server import *
-
 
 server = Server()
 server.start_server()
