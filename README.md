@@ -73,12 +73,16 @@ You can also build an image which has only the CPU dependecies to evaluate the m
       # this will open port 50051 and run the service 
       docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
 
- ## How to preprocess datasets
+ ## How to preprocess datasets and Generate Hash Table 
  	#download dataset using
 	bash download.bash
  
  	#to create classed_data folder to generate hash tables
 	python preprocess.py
+	
+	#to generate hash table 
+	# Look at the class to work on specific dataset from ours
+	python generate_hashtable.py
  
  
  ## How to generate the hash table 
