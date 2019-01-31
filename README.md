@@ -74,7 +74,12 @@ You can also build an image which has only the CPU dependecies to evaluate the m
       docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
 
  ## How to preprocess datasets
- - After downoading [Google Open Images Dataset v4](https://www.figure-eight.com/dataset/open-images-annotated-with-bounding-boxes/) use data/preprocess.py to put each data in their classes . i also used data/testtrainsplit.py to separate the data to folders for checking image retrieval (but this is not mandatory)
+ 	#download dataset using
+	bash download.bash
+ 
+ 	#to create classed_data folder to generate hash tables
+	python preprocess.py
+ 
  
  ## How to generate the hash table 
 - As given in storeLSH.ipynb you can initialize LSH engine and add image embedding after hashing and comparing them either by cosine similarity or Euclidean distance . then you will save the table using pickle
