@@ -27,11 +27,11 @@ The input can be both # channel or 2 channel images
 The returned result has the following form:
 
       message ImageFileOut {
-        bytes imageOut1 = 4;
-        bytes imageOut2 = 5;
-        bytes imageOut3 = 6;
-        bytes imageOut4 = 7;
-        bytes imageOut5 = 8;
+        string imageOut1 = 4;
+        string imageOut2 = 5;
+        string imageOut3 = 6;
+        string imageOut4 = 7;
+        string imageOut5 = 8;
       }
       
 where each image is size provided during the request
@@ -39,5 +39,6 @@ where each image is size provided during the request
 to get top 5 images images you can do like :
       
       # where responce.imageOut1 is the first output
+      #TODO this sth that needs to fixed.
       image1 = Image.frombytes(data=responce.imageOut1,size=IMG_SHAPE,mode='RGB')
        

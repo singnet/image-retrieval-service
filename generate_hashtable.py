@@ -17,7 +17,7 @@ import numpy as np
 
 
 class GenerateHashTable():
-    def __init__(self, measure="EuclideanDistance",data_path = 'data/classed_data/'):
+    def __init__(self, measure="EuclideanDistance", data_path='data/classed_data/'):
         self.res = ResnetSimilarity()
         self.pbar = ProgressBar()
         # Dimension of our vector space
@@ -29,7 +29,7 @@ class GenerateHashTable():
 
         self.measure = measure
         self.msote = MemoryStorage()
-        if measure=="EuclideanDistance":
+        if measure == "EuclideanDistance":
             self.engine = Engine(self.dimension, lshashes=[self.rbp], storage=self.msote, distance=EuclideanDistance())
         else:
             self.engine = Engine(self.dimension, lshashes=[self.rbp], storage=self.msote, distance=CosineDistance())
@@ -38,14 +38,14 @@ class GenerateHashTable():
         if self.measure == "CosineDistance":
             save_path = "hashed_objects/hashed_object_Cosine.pkl"
         elif self.measure == "EuclideanDistance":
-            save_path = "hashed_objects/hashed_object_equilidian.pkl"
+            save_path = "hashed_objects/hashed_object_euclidean.pkl"
         else:
-            save_path = "hashed_objects/"+str(self.measure)+".pkl"
+            save_path = "hashed_objects/" + str(self.measure) + ".pkl"
 
         count = 0
         for subdir, dirs, files in os.walk(self.data_path):
             for file in files:
-                if '.jpg' in file :
+                if '.jpg' in file:
                     img_path = os.path.join(subdir, file)
                     img = Image.open(img_path).convert('RGB')
 
@@ -59,15 +59,14 @@ class GenerateHashTable():
                             print("Saving  Image Embedding ", count)
                         count += 1
 
-        print("Saving File To",save_path)
-        filehandler = open("hashed_object_equilidian.pkl", 'wb')
+        print("Saving File To", save_path)
+        # TODO this is peculiar
+        filehandler = open(save_path, 'wb')
         pickle.dump(engine, filehandler)
 
 
-
-
 if __name__ == "__main__":
-    image_sim_eq = GenerateHashTable(measure="EuclideanDistance",data_path = 'data/classed_data/')
+    image_sim_eq = GenerateHashTable(measure="EuclideanDistance", data_path='data/classed_data/')
     image_sim_eq.generate_table()
-    image_sim_cos = GenerateHashTable(measure="CosineDistance",data_path = 'data/classed_data/')
+    image_sim_cos = GenerateHashTable(measure="CosineDistance", data_path='data/classed_data/')
     image_sim_cos.generate_table()

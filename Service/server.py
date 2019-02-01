@@ -10,10 +10,12 @@ import similarImage
 
 class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
     def FindSimilar(self, request, context):
-        responce = image_retrival_pb2.ImageFileOut()
-        responce.imageOut1, responce.imageOut2, responce.imageOut3, responce.imageOut4, responce.imageOut5 = similarImage.find_similar(
-            request.value, int(request.image_size), request.similarity)
-        return responce
+        if request.image is None:
+            raise InvalidParams("Image is required")
+        response = image_retrival_pb2.ImageFileOut()
+        response.imageOut1, response.imageOut2, response.imageOut3, response.imageOut4, response.imageOut5 = similarImage.find_similar(
+            input_image=request.image, img_similarity=request.similarity)
+        return response
 
 
 class Server():
