@@ -50,6 +50,7 @@ class TestSuiteGrpc(unittest.TestCase):
             f.write(base64.b64decode(response.imageOut4))
         with open('img_5', 'wb') as f:
             print(magic.from_buffer(base64.b64decode(response.imageOut5), mime=True).split('/'))
+            f.write(base64.b64decode(response.imageOut5))
 
         with open('img_1_', 'wb') as f:
             print(magic.from_buffer(base64.b64decode(self.image[0]), mime=True).split('/'))

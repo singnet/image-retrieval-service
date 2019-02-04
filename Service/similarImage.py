@@ -19,7 +19,7 @@ import magic
 def find_similar(input_image, image_size=100, img_similarity="EuclideanDistance"):
     # IMG_SHAPE = (image_size, image_size)
     binary_image = base64.b64decode(input_image)
-    file_format = magic.from_buffer(base64.b64decode(input_image), mime=True).split('/')[0]
+    file_format = magic.from_buffer(base64.b64decode(input_image), mime=True).split('/')[1]
 
     f = tempfile.NamedTemporaryFile(suffix='*.' + str(file_format))
     f.write(binary_image)

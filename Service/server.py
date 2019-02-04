@@ -32,3 +32,13 @@ class Server():
 
     def stop_server(self):
         self.server.stop(0)
+
+if __name__ == '__main__':
+    server = Server()
+    server.start_server()
+
+    try:
+        while True:
+            time.sleep(86400)
+    except KeyboardInterrupt:
+        server.stop_server()
