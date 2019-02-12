@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "display_name": "image-retrieval-service",
+    "encoding": "proto",
+    "service_type": "grpc",
+    "payment_expiration_threshold": 40320,
+    "model_ipfs_hash": "Qme67QoBENdXMCUufXHMiG6WhJ3XLKFpDFLXRGKeyEmun5",
+    "mpe_address": "0x7E6366Fbe3bdfCE3C906667911FC5237Cc96BD08",
+    "pricing": {},
+    "groups": [
+        {
+            "group_name": "default_group",
+            "group_id": "K8dKB9AocO+Uncb0F08dT5HdGz5k5aCf9GTCzCOn8MI=",
+            "payment_address": "0xd708A068F606893120eA34eECe8a2f7448Fca764"
+        }
+    ],
+    "endpoints": [
+        {
+            "group_name": "default_group",
+            "endpoint": "http://159.69.56.49:8004"
+        }
+    ],
+    "service_description": {
+        "description": "This service returns an image from google open image data retrieval validation set. ",
+        "url": "some valid url"
+    }
+}

@@ -96,8 +96,5 @@ You can also build an image which has only the CPU dependecies to evaluate the m
 preparing a better cleaner and good resolution data-set can improve the output results
 
 ## Authors
-Israel Abebe - Author and Maintainer - [SingularityNet.io](https://singularitynet.io/)
-
-
-
- 
+- [Israel Abebe](https://github.com/IsraelAbebe)- Author and Maintainer - [SingularityNet.io](https://singularitynet.io/)
+- [Tesfa Yohannes](https://github.com/tesyolan) - Maintainer - [SingularityNet.io](https://singularitynet.io/)

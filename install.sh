@@ -1,6 +1,6 @@
 #!/bin/bash
 
-snet_daemon_v=0.1.5
+snet_daemon_v=0.1.6
 
 # apt install tar
 if [ ! -d snet-daemon-v$snet_daemon_v ] ; then
@@ -12,3 +12,6 @@ if [ ! -d snet-daemon-v$snet_daemon_v ] ; then
 else
 	echo "Folder seems to exist"
 fi
+
+cp snet.config.example.kovan snet.config.example.kovan.json
+cp snet.config.example.ropsten snet.config.example.ropsten.json
