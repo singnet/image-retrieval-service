@@ -20,6 +20,9 @@ def getclass(label):
 
 
 save_to = "classed_data/"
+# TODO how to check if a file exist.
+if os.path.isdir(save_to):
+    exit(0)
 
 folder = "validation/"
 images = [f for f in listdir(folder) if isfile(join(folder, f))]
@@ -41,13 +44,16 @@ for i in pbar(range(len(images))):
 
     for i in data:
         if i[0] == fname:
+            class_label = getclass(i[2])
+            file_loc = save_to + class_label + '/' + str(image_path)
+            if not os.path.exists(save_to + class_label):
+                os.makedirs(save_to + class_label)
+            if os.path.exists(file_loc):
+                continue
             Xmin_idx = int(float(i[4]) * img_width)
             Xmax_idx = int(float(i[5]) * img_width)
             Ymin_idx = int(float(i[6]) * img_height)
             Ymax_idx = int(float(i[7]) * img_height)
 
-            class_label = getclass(i[2])
-            if not os.path.exists(save_to + class_label):
-                os.makedirs(save_to + class_label)
             cropped_img = image.crop((Xmin_idx, Ymin_idx, Xmax_idx, Ymax_idx))
-            cropped_img.save(save_to + class_label + '/' + str(image_path))
+            cropped_img.save(file_loc)
