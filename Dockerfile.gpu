@@ -29,6 +29,8 @@ COPY . /image-retrieval-in-pytorch
 
 WORKDIR /image-retrieval-in-pytorch
 
+VOLUME /image-retrieval-in-pytorch/data/classed_data
+
 EXPOSE 8003
 EXPOSE 8004
 
