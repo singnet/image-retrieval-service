@@ -62,7 +62,7 @@ class GenerateHashTable():
         print("Saving File To", save_path)
         # TODO this is peculiar
         filehandler = open(save_path, 'wb')
-        pickle.dump(engine, filehandler)
+        pickle.dump(self.engine, filehandler)
 
 
 if __name__ == "__main__":
