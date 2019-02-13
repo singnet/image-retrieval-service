@@ -61,7 +61,8 @@ If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installe
 
     ./deploy_service.sh
    
- Note the above script resolves to build 
+ Note the above script resolves to build the docker container depending on the availability of nvidia-docker. Also without
+ GPU the cosine similarity and euclidean similarity measure computation takes 6+ hours. It's best suited to have a GPU. 
    
  ## How to Use the docker image
 	
