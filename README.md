@@ -55,18 +55,13 @@ To run it on your own image, use the following command. Please make sure to see 
      
      
 
-## Using docker with GPU
+## Using docker with GPU, CPU
 
-If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which you can use to build your image.
+If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which you can use to build your image or if that doesn't exist.
 
-     docker build --file Dockerfile.gpu . -t singnet:image-retrieval
-
-## Using docker with CPU
-
-You can also build an image which has only the CPU dependecies to evaluate the models provided.
-
-	docker build --file Dockerfile . -t singnet:image-retrieval-cpu
+    ./deploy_service.sh
    
+ Note the above script resolves to build 
    
  ## How to Use the docker image
 	
@@ -74,6 +69,7 @@ You can also build an image which has only the CPU dependecies to evaluate the m
       docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
 
  ## How to preprocess datasets and Generate Hash Table 
+    cd models/
  	#download dataset using
 	bash download.bash
  
@@ -83,7 +79,7 @@ You can also build an image which has only the CPU dependecies to evaluate the m
 	#to generate hash table 
 	# Look at the class to work on specific dataset from ours
 	python generate_hashtable.py
- 
+
  
  ## How to generate the hash table 
 - As given in storeLSH.ipynb you can initialize LSH engine and add image embedding after hashing and comparing them either by cosine similarity or Euclidean distance . then you will save the table using pickle
