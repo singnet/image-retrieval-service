@@ -38,7 +38,7 @@ message ImageFileOut {
     string imageOut5 = 8;
 }
 ```
-      
+
 to change this strings to images you can do like :
 ```python
 # installable via pip install python-magic
@@ -53,3 +53,16 @@ file_format = magic.from_buffer(binary_image, mime=True).split('/')[1]
 with open("images/client_out2." + file_format, 'wb') as f:
     f.write(binary_image)
 ```
+For example: 
+- For a given image: 
+
+<img src="../assets/4f24007b18d82e7b.jpg" alt="request_image" width="200"/>
+
+- The following five image response would be returned and are sorted in terms of quality.
+
+<img src="../assets/12ffec29f591b319.jpg" alt="response_image" width="200"/>
+<img src="../assets/58ab0d816f965f86.jpg" alt="response_image" width="200"/>
+<img src="../assets/a5d01fb7fc6a38a2.jpg" alt="response_image" width="200"/> 
+<img src="../assets/aa3dc31f0ecf8b85.jpg" alt="response_image" width="200"/>
+<img src="../assets/f1957796c4b9ef30.jpg" alt="response_image" width="200"/>
+

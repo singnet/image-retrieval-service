@@ -6,7 +6,10 @@
     "payment_expiration_threshold": 40320,
     "model_ipfs_hash": "Qme67QoBENdXMCUufXHMiG6WhJ3XLKFpDFLXRGKeyEmun5",
     "mpe_address": "0x7E6366Fbe3bdfCE3C906667911FC5237Cc96BD08",
-    "pricing": {},
+    "pricing": {
+        "price_model": "fixed_price",
+        "price_in_cogs": 1
+    },
     "groups": [
         {
             "group_name": "default_group",
