@@ -25,6 +25,6 @@
     ],
     "service_description": {
         "description": "This service returns an image from google open image data retrieval validation set. ",
-        "url": "some valid url"
+        "url": "https://singnet.github.io/image-retrieval-service"
     }
 }
