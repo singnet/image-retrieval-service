@@ -11,9 +11,12 @@ import similarImage
 class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
     def FindSimilar(self, request, context):
         if request.image is None:
-            raise InvalidParams("Image is required")
+            context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+            context.set_details("Image is required")
+            return image_retrival_pb2.ImageFileOut()
         if not request.similarity == "Test" or not request.similarity == "CosineDistance" or request.similarity == "EuclideanDistance":
-            raise InvalidParams("Similarity Measure has to be one of: Test, CosineDistance, EuclideanDistance")
+            context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+            context.set_details("Similarity Measure has to be one of: Test, CosineDistance, EuclideanDistance")
         response = image_retrival_pb2.ImageFileOut()
         response.imageOut1, response.imageOut2, response.imageOut3, response.imageOut4, response.imageOut5 = similarImage.find_similar(
             input_image=request.image, img_similarity=request.similarity)
