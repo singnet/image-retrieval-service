@@ -6,6 +6,9 @@ __pycache__/
 Service/image_retrival_pb2.py
 Service/image_retrival_pb2_grpc.py
 
+data/*.csv
+data/*.zip
+
 *.jpg
 *.jpeg
 *.png

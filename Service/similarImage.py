@@ -11,19 +11,23 @@ sys.path.insert(0, parent_dir)
 from imageSimilarity import ImageSimilarity
 from PIL import Image
 import numpy as np
+import base64
+import tempfile
+import magic
 
 
-def find_similar(input_image, image_size=100, Img_similarity="EuclideanDistance"):
-    IMG_SHAPE = (image_size, image_size)
-    try:
-        image = Image.frombytes(data=input_image, size=IMG_SHAPE, mode='RGB')
-    except:
-        image = Image.frombytes(data=input_image, size=IMG_SHAPE, mode='L')
-        image = image.convert('RGB')
+def find_similar(input_image, image_size=100, img_similarity="EuclideanDistance"):
+    # IMG_SHAPE = (image_size, image_size)
+    binary_image = base64.b64decode(input_image)
+    file_format = magic.from_buffer(base64.b64decode(input_image), mime=True).split('/')[1]
 
-    if Img_similarity == "CosineDistance":
+    f = tempfile.NamedTemporaryFile(suffix='*.' + str(file_format))
+    f.write(binary_image)
+    image = Image.open(f.name)
+
+    if img_similarity == "CosineDistance":
         imgs = ImageSimilarity(distanceMeasure="CosineDistance")
-    if Img_similarity == "Test":
+    elif img_similarity == "Test":
         imgs = ImageSimilarity(distanceMeasure="Test")
     else:
         imgs = ImageSimilarity(distanceMeasure="EuclideanDistance")
@@ -31,19 +35,16 @@ def find_similar(input_image, image_size=100, Img_similarity="EuclideanDistance"
     re = imgs.query(image)
     imgs.tearDown()
 
-    image_1 = Image.open(re[0]).resize(IMG_SHAPE)
-    image_2 = Image.open(re[1]).resize(IMG_SHAPE)
-    image_3 = Image.open(re[2]).resize(IMG_SHAPE)
-    image_4 = Image.open(re[3]).resize(IMG_SHAPE)
-    image_5 = Image.open(re[4]).resize(IMG_SHAPE)
+    # Why resize the response file.
+    image = []
+    for i in re:
+        with open(i, 'rb') as f:
+            img = f.read()
+            img = base64.b64encode(img).decode('utf-8')
+        image.append(img)
 
-    image_1_b = image_1.tobytes()
-    image_2_b = image_2.tobytes()
-    image_3_b = image_3.tobytes()
-    image_4_b = image_2.tobytes()
-    image_5_b = image_3.tobytes()
 
-    return image_1_b, image_2_b, image_3_b, image_4_b, image_5_b
+    return image[0], image[1], image[2], image[3], image[4]
 
 # imgs = ImageSimilarity()
 # pic_one1  = Image.open("./data/classed_data/val/Dog/b8f75a7e8e6def6c.jpg")

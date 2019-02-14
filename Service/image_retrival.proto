@@ -1,17 +1,16 @@
 syntax = "proto3";
 
 message ImageFileIn {
-	bytes value = 1;
-	float image_size = 2;
-	string similarity = 3;
+	string image = 1;
+	string similarity = 4;
 }
 
 message ImageFileOut {
-	bytes imageOut1 = 4;
-	bytes imageOut2 = 5;
-	bytes imageOut3 = 6;
-	bytes imageOut4 = 7;
-	bytes imageOut5 = 8;
+	string imageOut1 = 4;
+	string imageOut2 = 5;
+	string imageOut3 = 6;
+	string imageOut4 = 7;
+	string imageOut5 = 8;
 }
 
 service SimilarImage {

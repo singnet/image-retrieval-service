@@ -55,25 +55,24 @@ To run it on your own image, use the following command. Please make sure to see 
      
      
 
-## Using docker with GPU
+## Using docker with GPU, CPU
 
-If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which you can use to build your image.
+If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which you can use to build your image or if that doesn't exist.
 
-     docker build --file Dockerfile.gpu . -t singnet:image-retrieval
-
-## Using docker with CPU
-
-You can also build an image which has only the CPU dependecies to evaluate the models provided.
-
-	docker build --file Dockerfile . -t singnet:image-retrieval-cpu
+    ./deploy_service.sh
    
+ Note the above script resolves to build the docker container depending on the availability of nvidia-docker. Also without
+ GPU the cosine similarity and euclidean similarity measure computation takes 6+ hours. It's best suited to have a GPU. 
    
  ## How to Use the docker image
 	
+We need to mount the classed_data folder as that is the images we are going to return reside in. 
+
       # this will open port 50051 and run the service 
-      docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
+      docker run -it -v $PWD/data/classed_data:/image-retrieval-in-pytorch/data/classed_data -p 8003:8003 -p 8004:8004 singularitynet:image-retrieval-cpu
 
  ## How to preprocess datasets and Generate Hash Table 
+    cd models/
  	#download dataset using
 	bash download.bash
  
@@ -83,7 +82,7 @@ You can also build an image which has only the CPU dependecies to evaluate the m
 	#to generate hash table 
 	# Look at the class to work on specific dataset from ours
 	python generate_hashtable.py
- 
+
  
  ## How to generate the hash table 
 - As given in storeLSH.ipynb you can initialize LSH engine and add image embedding after hashing and comparing them either by cosine similarity or Euclidean distance . then you will save the table using pickle
@@ -96,8 +95,5 @@ You can also build an image which has only the CPU dependecies to evaluate the m
 preparing a better cleaner and good resolution data-set can improve the output results
 
 ## Authors
-Israel Abebe - Author and Maintainer - [SingularityNet.io](https://singularitynet.io/)
-
-
-
- 
+- [Israel Abebe](https://github.com/IsraelAbebe)- Author and Maintainer - [SingularityNet.io](https://singularitynet.io/)
+- [Tesfa Yohannes](https://github.com/tesyolan) - Maintainer - [SingularityNet.io](https://singularitynet.io/)

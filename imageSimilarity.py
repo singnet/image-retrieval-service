@@ -20,7 +20,7 @@ class ImageSimilarity():
         rbp = RandomBinaryProjections('rbp', 10)
         self.engine = Engine(dimension, lshashes=[rbp])
         if distanceMeasure == "EuclideanDistance":
-            self.filehandler = open("hashed_objects/hashed_object_equilidian.pkl", 'rb')
+            self.filehandler = open("hashed_objects/hashed_object_euclidean.pkl", 'rb')
         elif distanceMeasure == "Test":
             self.filehandler = open("hashed_objects/hashed_object_example.pkl", 'rb')
         else:
