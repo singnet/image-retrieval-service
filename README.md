@@ -66,8 +66,10 @@ If you have a [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) installe
    
  ## How to Use the docker image
 	
+We need to mount the classed_data folder as that is the images we are going to return reside in. 
+
       # this will open port 50051 and run the service 
-      docker run -it --rm -p 50051:50051 singnet:image-retrieval-cpu
+      docker run -it -v $PWD/data/classed_data:/image-retrieval-in-pytorch/data/classed_data -p 8003:8003 -p 8004:8004 singularitynet:image-retrieval-cpu
 
  ## How to preprocess datasets and Generate Hash Table 
     cd models/
