@@ -14,7 +14,7 @@ class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
             context.set_details("Image is required")
             return image_retrival_pb2.ImageFileOut()
-        if not request.similarity == "Test" or not request.similarity == "CosineDistance" or request.similarity == "EuclideanDistance":
+        if request.similarity not in ["Test", "CosineDistance", "EuclideanDistance"]:
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
             context.set_details("Similarity Measure has to be one of: Test, CosineDistance, EuclideanDistance")
         response = image_retrival_pb2.ImageFileOut()
@@ -37,6 +37,7 @@ class Server():
 
     def stop_server(self):
         self.server.stop(0)
+
 
 if __name__ == '__main__':
     server = Server()
