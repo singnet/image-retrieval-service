@@ -1,9 +1,4 @@
 import sys
-
-sys.path.insert(0, 'Service/')
-
-from client import ClientTest
-from server import *
 from PIL import Image
 import unittest
 import numpy as np
@@ -14,14 +9,19 @@ import base64
 import magic
 from PIL import ImageChops
 
+sys.path.insert(0, 'Service/')
+
+from client import ClientTest
+from server import *
+
 
 class TestSuiteGrpc(unittest.TestCase):
     def setUp(self):
         self.results = ["data/example_dataset/4f24007b18d82e7b.jpg",
-                        "data/example_dataset/c449a728be2c4144.jpg",
                         "data/example_dataset/1655ed7fefd46b13.jpg",
-                        "data/example_dataset/c449a728be2c4144.jpg",
-                        "data/example_dataset/1655ed7fefd46b13.jpg"]
+                        "data/example_dataset/f41b9c2a35109333.jpg",
+                        "data/example_dataset/12ffec29f591b319.jpg",
+                        "data/example_dataset/c449a728be2c4144.jpg"]
 
         self.image = []
         for i in self.results:
@@ -70,11 +70,12 @@ class TestSuiteGrpc(unittest.TestCase):
 
         # TODO how come the above are very different when passed through it.
         # The size between the two are different.
-        self.assertEquals(base64.b64decode(response.imageOut1), base64.b64decode(self.image[0]))
-        self.assertEquals(base64.b64decode(response.imageOut2), base64.b64decode(self.image[1]))
-        self.assertEqual(response.imageOut3, self.image[2])
-        self.assertEqual(response.imageOut4, self.image[3])
-        self.assertEqual(response.imageOut5, self.image[4])
+        self.assertEqual(base64.b64decode(response.imageOut1),base64.b64decode(self.image[0]))
+        self.assertEqual(base64.b64decode(response.imageOut2),base64.b64decode(self.image[1]))
+        self.assertEqual(base64.b64decode(response.imageOut3),base64.b64decode(self.image[2]))
+        self.assertEqual(base64.b64decode(response.imageOut4),base64.b64decode(self.image[3]))
+        self.assertEqual(base64.b64decode(response.imageOut5),base64.b64decode(self.image[4]))
+
 
     def tearDown(self):
         # self.client.channel.close()
