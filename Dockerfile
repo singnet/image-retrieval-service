@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa -y
@@ -37,6 +37,6 @@ EXPOSE 8004
 
 RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
 
-RUN ./install.sh
+RUN chmod +x install.sh && ./install.sh
 
 CMD ["python3.6", "run-snet-service.py","--daemon-config-path-kovan","snet.config.example.kovan.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
