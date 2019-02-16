@@ -35,6 +35,8 @@ EXPOSE 8003
 EXPOSE 8004
 
 
+RUN mkdir -p /root/.torch/models/ && wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O /root/.torch/models/resnet50-19c8e357.pth
+
 RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
 
 RUN chmod +x install.sh && ./install.sh

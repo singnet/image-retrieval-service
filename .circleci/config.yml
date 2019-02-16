@@ -6,7 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install GRPC
+          name: download models
+          command: mkdir -p /root/.torch/models/ && wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O /root/.torch/models/resnet50-19c8e357.pth
+      - run:
+          name: install requirements
           command: python3.6 -m  pip install -r requirements.txt
       - run:
           name: Generate GRPC files
