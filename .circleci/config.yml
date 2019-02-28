@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install GRPC
-          command: python3.6 -m pip install grpcio grpcio-tools
+          name: download models
+          command: mkdir -p /root/.torch/models/ && wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O /root/.torch/models/resnet50-19c8e357.pth
+      - run:
+          name: install requirements
+          command: python3.6 -m  pip install -r requirements.txt
       - run:
           name: Generate GRPC files
           command: cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
