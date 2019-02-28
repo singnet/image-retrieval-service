@@ -17,6 +17,8 @@ class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
         if request.similarity not in ["Test", "CosineDistance", "EuclideanDistance"]:
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
             context.set_details("Similarity Measure has to be one of: Test, CosineDistance, EuclideanDistance")
+            return image_retrival_pb2.ImageFileOut()
+
         response = image_retrival_pb2.ImageFileOut()
         response.imageOut1, response.imageOut2, response.imageOut3, response.imageOut4, response.imageOut5 = similarImage.find_similar(
             input_image=request.image, img_similarity=request.similarity)

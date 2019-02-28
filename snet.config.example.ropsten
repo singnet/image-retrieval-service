@@ -7,6 +7,8 @@
    "PASSTHROUGH_ENDPOINT": "http://localhost:50051",
    "ORGANIZATION_ID": "snet",
    "SERVICE_ID": "image-retrieval-service",
+   "ssl_cert": "/etc/letsencrypt/live/tz-services-1.snet.sh/fullchain.pem",
+   "ssl_key": "/etc/letsencrypt/live/tz-services-1.snet.sh/privkey.pem",
    "PAYMENT_CHANNEL_STORAGE_SERVER": {
 	    "id": "storage-ropsten",
 	    "host": "127.0.0.1",
