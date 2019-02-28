@@ -31,7 +31,7 @@ WORKDIR /image-retrieval-in-pytorch
 
 VOLUME /image-retrieval-in-pytorch/data/classed_data
 
-EXPOSE 8003
+EXPOSE 8014
 EXPOSE 8004
 
 
@@ -41,4 +41,4 @@ RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_pytho
 
 RUN chmod +x install.sh && ./install.sh
 
-CMD ["python3.6", "run-snet-service.py","--daemon-config-path-kovan","snet.config.example.kovan.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
+CMD ["python3.6", "run-snet-service.py","--daemon-config-path-mainnet","snet.config.example.mainnet.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]

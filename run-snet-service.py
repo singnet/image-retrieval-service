@@ -8,7 +8,7 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser(prog="run-snet-service")
-    parser.add_argument("--daemon-config-path-kovan", help="Path to daemon configuration file for kovan", required=True)
+    parser.add_argument("--daemon-config-path-mainnet", help="Path to daemon configuration file for mainnet", required=True)
     parser.add_argument("--daemon-config-path-ropsten", help="Path to daemon configuration file for ropsten",
                         required=True)
     args = parser.parse_args(sys.argv[1:])
