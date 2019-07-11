@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "display_name": "Image Retrieval Service",
+    "encoding": "proto",
+    "service_type": "grpc",
+    "payment_expiration_threshold": 40320,
+    "model_ipfs_hash": "QmVUXPELDp3xnHjKhYMoHQG8hDN19DKQxJhpWPi3i9H1UM",
+    "mpe_address": "0x7E6366Fbe3bdfCE3C906667911FC5237Cc96BD08",
+    "pricing": {
+        "price_model": "fixed_price",
+        "price_in_cogs": 1
+    },
+    "groups": [
+        {
+            "group_name": "default_group",
+            "group_id": "AZ6SQMMQdI0UcfrzWSY8K1QiP6oC0f+a2nY/S6OqWGQ=",
+            "payment_address": "0xf472a171dc35fD30a2462dD5CDCF5F39b26dc390"
+        }
+    ],
+    "endpoints": [
+        {
+            "group_name": "default_group",
+            "endpoint": "https://tz-services-1.snet.sh:8014"
+        }
+    ],
+    "service_description": {
+        "url": "https://singnet.github.io/image-retrieval-service/users_guide/image-retrieval-service.html",
+        "description": "Given an uploaded image, this service would return top six matches from google open image dataset."
+    }
+}

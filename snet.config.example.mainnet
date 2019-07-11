@@ -1,8 +1,8 @@
 {
-   "DAEMON_END_POINT": "0.0.0.0:8003",
-   "ETHEREUM_JSON_RPC_ENDPOINT": "https://kovan.infura.io",
+   "DAEMON_END_POINT": "0.0.0.0:8014",
+   "ETHEREUM_JSON_RPC_ENDPOINT": "https://mainnet.infura.io",
    "IPFS_END_POINT": "http://ipfs.singularitynet.io:80",
-   "REGISTRY_ADDRESS_KEY": "0xe331bf20044a5b24c1a744abc90c1fd711d2c08d",
+   "REGISTRY_ADDRESS_KEY": "0xb3180a92e210b45e3447976a412ac0df859febaf",
    "PASSTHROUGH_ENABLED": true,
    "PASSTHROUGH_ENDPOINT": "http://localhost:50051",
    "ORGANIZATION_ID": "snet",
@@ -10,13 +10,13 @@
    "ssl_cert": "/etc/letsencrypt/live/tz-services-1.snet.sh/fullchain.pem",
    "ssl_key": "/etc/letsencrypt/live/tz-services-1.snet.sh/privkey.pem",
    "PAYMENT_CHANNEL_STORAGE_SERVER": {
-	    "id": "storage-kovan",
+	    "id": "storage-mainnet",
 	    "host": "127.0.0.1",
 	    "client_port": 2379,
 	    "peer_port": 2380,
 	    "token": "unique-token",
-	    "cluster": "storage-kovan=http://127.0.0.1:2380",
-	    "data_dir": "etcd/storage-data-dir-kovan.etcd",
+	    "cluster": "storage-mainnet=http://127.0.0.1:2380",
+	    "data_dir": "etcd/storage-data-dir-mainnet.etcd",
 	    "enabled": true
    },
   "payment_channel_storage_client": {

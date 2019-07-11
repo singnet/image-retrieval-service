@@ -20,7 +20,7 @@
     "endpoints": [
         {
             "group_name": "default_group",
-            "endpoint": "http://159.69.56.49:8003"
+            "endpoint": "https://tz-services-1.snet.sh:8003"
         }
     ],
     "service_description": {

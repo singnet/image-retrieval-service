@@ -14,7 +14,7 @@ class SimilarImageServicer(image_retrival_pb2_grpc.SimilarImageServicer):
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
             context.set_details("Image is required")
             return image_retrival_pb2.ImageFileOut()
-        if not request.similarity in ["Test", "CosineDistance", "EuclideanDistance"]:
+        if request.similarity not in ["Test", "CosineDistance", "EuclideanDistance"]:
             context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
             context.set_details("Similarity Measure has to be one of: Test, CosineDistance, EuclideanDistance")
             return image_retrival_pb2.ImageFileOut()

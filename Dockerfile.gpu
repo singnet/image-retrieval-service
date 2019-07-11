@@ -31,12 +31,14 @@ WORKDIR /image-retrieval-in-pytorch
 
 VOLUME /image-retrieval-in-pytorch/data/classed_data
 
-EXPOSE 8003
+EXPOSE 8014
 EXPOSE 8004
 
 
+RUN mkdir -p /root/.torch/models/ && wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O /root/.torch/models/resnet50-19c8e357.pth
+
 RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_retrival.proto
 
-RUN ./install.sh
+RUN chmod +x install.sh && ./install.sh
 
-CMD ["python3.6", "run-snet-service.py","--daemon-config-path-kovan","snet.config.example.kovan.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
+CMD ["python3.6", "run-snet-service.py","--daemon-config-path-mainnet","snet.config.example.mainnet.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
