@@ -9,10 +9,11 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(prog="run-snet-service")
     parser.add_argument("--daemon-config-path-mainnet", help="Path to daemon configuration file for mainnet", required=True)
+    parser.add_argument("--daemon-config-path-mainnet-2", help="Path to daemon configuration file for mainnet-2", required=True)
     parser.add_argument("--daemon-config-path-ropsten", help="Path to daemon configuration file for ropsten",
                         required=True)
     args = parser.parse_args(sys.argv[1:])
-    daemons = {'mainnet':args.daemon_config_path_mainnet, 'ropsten':args.daemon_config_path_ropsten}
+    daemons = {'mainnet':args.daemon_config_path_mainnet,'mainnet-2':args.daemon_config_path_mainnet_2, 'ropsten':args.daemon_config_path_ropsten}
     snetd_p = []
 
     def handle_signal(signum, frame):
@@ -44,7 +45,11 @@ def main():
 def start_snetd(cwd, daemon_config_path=None):
     cmd = ["./snetd-linux-amd64"]
     if daemon_config_path is not None:
-        cmd.extend(["--config", daemon_config_path])
+        if daemon_config_path == 'snet.config.example.mainnet-2.json':
+            cmd = ["./snetd-linux-amd64-2"]
+            cmd.extend(["--config", daemon_config_path])
+        else:
+            cmd.extend(["--config", daemon_config_path])
     return subprocess.Popen(cmd)
 
 
