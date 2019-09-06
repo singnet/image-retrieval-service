@@ -14,6 +14,8 @@
    "blockchain_network_selected": "main",
    "metering_end_point": "https://mainnet-marketplace.singularitynet.io/metering",
    "pvt_key_for_metering":    "ec37525f61b0422d5895ea5a67601bc9c154e9e697cab4c094337476a22c9328",
+   "burst_size": 1,
+   "rate_limit_per_minute": 2,
    "LOG": {
        "LEVEL": "debug",
        "OUTPUT": {
