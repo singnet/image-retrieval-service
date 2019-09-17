@@ -2,28 +2,17 @@
    "DAEMON_END_POINT": "0.0.0.0:8004",
    "ETHEREUM_JSON_RPC_ENDPOINT": "https://ropsten.infura.io",
    "IPFS_END_POINT": "http://ipfs.singularitynet.io:80",
-   "REGISTRY_ADDRESS_KEY": "0x5156fde2ca71da4398f8c76763c41bc9633875e4",
    "PASSTHROUGH_ENABLED": true,
    "PASSTHROUGH_ENDPOINT": "http://localhost:50051",
    "ORGANIZATION_ID": "snet",
    "SERVICE_ID": "image-retrieval-service",
    "ssl_cert": "/etc/letsencrypt/live/tz-services-1.snet.sh/fullchain.pem",
    "ssl_key": "/etc/letsencrypt/live/tz-services-1.snet.sh/privkey.pem",
-   "PAYMENT_CHANNEL_STORAGE_SERVER": {
-	    "id": "storage-ropsten",
-	    "host": "127.0.0.1",
-	    "client_port": 2381,
-	    "peer_port": 2382,
-	    "token": "unique-token",
-	    "cluster": "storage-ropsten=http://127.0.0.1:2382",
-	    "data_dir": "etcd/storage-data-dir-ropsten.etcd",
-	    "enabled": true
-   },
-  "payment_channel_storage_client": {
-	    "connection_timeout": "5s",
-	    "request_timeout": "3s",
-	    "endpoints": ["http://127.0.0.1:2381"]
-  },
+   "payent_channel_cert_path": "/ssl/client.pem",
+   "payent_channel_ca_path": "/ssl/ca.pem",
+   "payent_channel_key_path": "/ssl/client-key.pem",
+   "metering_end_point": "https://ropsten-marketplace.singularitynet.io/metering",
+   "pvt_key_for_metering":"Provided to you already",
    "LOG": {
        "LEVEL": "debug",
        "OUTPUT": {
