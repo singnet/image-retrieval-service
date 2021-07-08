@@ -42,4 +42,4 @@ RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_pytho
 
 RUN chmod +x install.sh && ./install.sh
 
-CMD ["python3.6", "run-snet-service.py","--daemon-config-path-mainnet","snet.config.example.mainnet.json","--daemon-config-path-mainnet-2","snet.config.example.mainnet-2.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
+CMD ["python3.6", "run-snet-service.py","--daemon-config-path-mainnet","snet.config.example.mainnet.json","--daemon-config-path-mainnet-2","snet.config.example.mainnet-2.json","--daemon-config-path-mainnet-3","snet.config.example.mainnet-3.json","--daemon-config-path-ropsten","snet.config.example.ropsten.json"]
